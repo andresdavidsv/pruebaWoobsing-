@@ -70,7 +70,7 @@ class RegisterController extends Controller
      */
     public function update(Request $request, register $register)
     {
-        $register = Register::fingOrFail($register->id);
+        $register = Register::findOrFail($register->id);
         $register->update($request->all());
 
         return $register;
@@ -84,7 +84,7 @@ class RegisterController extends Controller
      */
     public function destroy(register $register)
     {
-        $register = Register::fingOrFail($register->id);
+        $register = Register::findOrFail($register->id);
         $register -> delete();
 
         return 204;

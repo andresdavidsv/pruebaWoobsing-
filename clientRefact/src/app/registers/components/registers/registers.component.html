@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row center-xs between-xs middle-xs header-row">
+    <div class="col-xs-6">
+      <div class="box">
+        <h1>LISTADO DE REGISTROS</h1>
+      </div>
+    </div>
+
+    <div class="row between-xs middle-xs header-row">
+      <a mat-raised-button routerLink="/panel/create">
+        <mat-icon> add_circle_outline </mat-icon>
+        Nuevo Registro
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="mat-elevation-z8">
+    <table
+      mat-table
+      [dataSource]="registers"
+      class="full-width-table registers-table"
+      matSort
+      aria-label="Elements"
+    >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let register">{{ register.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+        <td mat-cell *matCellDef="let register">
+          {{ register.last_name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Telefono</th>
+        <td mat-cell *matCellDef="let register">
+          {{ register.phone }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td mat-cell *matCellDef="let register">
+          {{ register.email }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Direccion</th>
+        <td mat-cell *matCellDef="let register">
+          {{ register.address }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+        <td mat-cell *matCellDef="let register">
+          <a mat-raised-button [routerLink]="['/panel/edit', register.id]"
+            >Editar</a
+          >
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="deleteRegister(register.id)"
+          >
+            Eliminar
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

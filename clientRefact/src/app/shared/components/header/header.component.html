@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="container">
+      <div class="row between-xs middle-xs">
+        <nav>
+          <a
+            mat-button
+            [routerLink]="['/']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><mat-icon>home</mat-icon></a
+          >
+          <a mat-button [routerLink]="['/registers']" routerLinkActive="active"
+            >Registros</a
+          >
+          <a mat-button [routerLink]="['/panel']" routerLinkActive="active"
+            >Panel</a
+          >
+        </nav>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
